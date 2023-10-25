@@ -1,6 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:dog_board/core/app_router/app_router.dart';
+import 'package:dog_board/features/dashboard/presentation/bloc/breeds_bloc.dart';
+import 'package:dog_board/injection_container.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 @RoutePage()
 class DashboardPage extends StatelessWidget {
@@ -8,7 +11,10 @@ class DashboardPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const DashboardView();
+    return BlocProvider(
+      create: (_) => sl.get<BreedsBloc>(),
+      child: const DashboardView(),
+    );
   }
 }
 
@@ -17,28 +23,49 @@ class DashboardView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AutoTabsScaffold(
-      routes: const [
-        ImagesListRoute(),
-        RandomImageRoute(),
-      ],
-      bottomNavigationBuilder: (context, tabsRouter) {
-        return BottomNavigationBar(
-          currentIndex: tabsRouter.activeIndex,
-          onTap: tabsRouter.setActiveIndex,
-          items: const [
-            BottomNavigationBarItem(
-              activeIcon: Icon(Icons.photo_library),
-              icon: Icon(Icons.photo_library_outlined),
-              label: 'Images List',
-            ),
-            BottomNavigationBarItem(
-              activeIcon: Icon(Icons.casino),
-              icon: Icon(Icons.casino_outlined),
-              label: 'Random Image',
-            ),
-          ],
-        );
+    return BlocBuilder<BreedsBloc, BreedsState>(
+      builder: (context, breedsState) {
+        switch (breedsState) {
+          case BreedsLoading():
+            // TODO: Update loading view.
+            return const Scaffold(
+              body: Center(
+                child: CircularProgressIndicator(),
+              ),
+            );
+          case BreedsError():
+            // TODO: Update error view.
+            return const Scaffold(
+              body: Center(
+                child: Text('Error'),
+              ),
+            );
+          case BreedsLoaded():
+            return AutoTabsScaffold(
+              routes: const [
+                ImagesListRoute(),
+                RandomImageRoute(),
+              ],
+              bottomNavigationBuilder: (context, tabsRouter) {
+                return BottomNavigationBar(
+                  currentIndex: tabsRouter.activeIndex,
+                  onTap: tabsRouter.setActiveIndex,
+                  items: const [
+                    BottomNavigationBarItem(
+                      activeIcon: Icon(Icons.photo_library),
+                      icon: Icon(Icons.photo_library_outlined),
+                      label: 'Images List',
+                    ),
+                    BottomNavigationBarItem(
+                      activeIcon: Icon(Icons.casino),
+                      icon: Icon(Icons.casino_outlined),
+                      label: 'Random Image',
+                    ),
+                  ],
+                );
+              },
+            );
+        }
       },
     );
   }
