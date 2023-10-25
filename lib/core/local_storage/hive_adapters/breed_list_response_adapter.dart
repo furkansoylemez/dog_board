@@ -7,7 +7,8 @@ class BreedListResponseAdapter extends TypeAdapter<BreedListResponse> {
 
   @override
   BreedListResponse read(BinaryReader reader) {
-    final rawMap = reader.read() as Map<String, dynamic>;
+    final raw = reader.read();
+    final rawMap = Map<String, dynamic>.from(raw as Map);
 
     final message = rawMap.map(
       (key, value) =>
