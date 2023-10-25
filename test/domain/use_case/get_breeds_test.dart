@@ -23,13 +23,13 @@ void main() {
   test('should get breeds from the dog repository', () async {
     // arrange
     when(() => mockDogRepository.getBreeds())
-        .thenAnswer((_) async => Right(tBreedsList));
+        .thenAnswer((_) async => Right(tBreeds));
 
     // act
     final result = await getBreeds(NoParams());
 
     // assert
-    expect(result, Right<Failure, List<Breed>>(tBreedsList));
+    expect(result, Right<Failure, List<Breed>>(tBreeds));
     verify(() => mockDogRepository.getBreeds()).called(1);
     verifyNoMoreInteractions(mockDogRepository);
   });
