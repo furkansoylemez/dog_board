@@ -1,8 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:dog_board/core/extension/string_extension.dart';
+import 'package:dog_board/domain/entity/breed.dart';
 import 'package:dog_board/features/dashboard/presentation/bloc/breeds_bloc.dart';
 import 'package:dog_board/features/images_list/presentation/images_list_by_breed/bloc/images_list_by_breed_bloc.dart';
 import 'package:dog_board/injection_container.dart';
+import 'package:dog_board/presentation/widgets/custom_grid_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -28,68 +30,82 @@ class ImagesListByBreedView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ImagesListByBreedBloc, ImagesListByBreedState>(
       builder: (context, state) {
-        // TODO(furkan): Update view.
         return Scaffold(
-          body: Center(
-            child: Column(
-              children: [
-                const SizedBox(
-                  height: 30,
+          appBar: AppBar(
+            title: const Text('Images List By Breed'),
+          ),
+          body: Column(
+            children: [
+              if (state.status == ImagesListByBreedStatus.loading)
+                const Expanded(
+                  child: Center(child: CircularProgressIndicator()),
+                )
+              else if (state.status == ImagesListByBreedStatus.error)
+                Expanded(child: Center(child: Text(state.failure.toString())))
+              else if (state.status == ImagesListByBreedStatus.loaded &&
+                  state.imageList != null)
+                Expanded(
+                  child: CustomGridView(
+                    imageList: state.imageList!,
+                  ),
+                )
+              else if (state.status == ImagesListByBreedStatus.initial)
+                const Expanded(
+                  child: Center(
+                    child: Text(
+                      'Select a breed and fetch your dose of cuteness!',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
                 ),
-                DropdownButton(
+              const SizedBox(height: 8),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: DropdownButtonFormField(
                   value: state.selectedBreed,
                   items: state.breeds
                       .map(
-                        (e) => DropdownMenuItem(
-                          value: e,
-                          child: Text(e.breed.capitalize),
+                        (breed) => DropdownMenuItem(
+                          value: breed,
+                          child: Text(breed.breed.capitalize),
                         ),
                       )
                       .toList(),
                   onChanged: (value) {
-                    if (value != null) {
-                      context
-                          .read<ImagesListByBreedBloc>()
-                          .add(BreedChanged(value));
-                    }
+                    _onBreedChanged(value, context);
                   },
                 ),
-                ElevatedButton(
-                  onPressed: state.status == ImagesListByBreedStatus.loading
-                      ? null
-                      : () {
-                          context
-                              .read<ImagesListByBreedBloc>()
-                              .add(ImagesListByBreedRequested());
-                        },
-                  child: const Text('Get Images'),
-                ),
-                if (state.status == ImagesListByBreedStatus.loading)
-                  const CircularProgressIndicator()
-                else if (state.status == ImagesListByBreedStatus.error)
-                  Text(state.failure.toString())
-                else if (state.status == ImagesListByBreedStatus.loaded &&
-                    state.imageList != null)
-                  Expanded(
-                    child: GridView.builder(
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                      ),
-                      itemCount: state.imageList!.images.length,
-                      itemBuilder: (context, index) {
-                        return Image.network(
-                          state.imageList!.images[index],
-                          fit: BoxFit.cover,
-                        );
+              ),
+              const SizedBox(height: 8),
+              ElevatedButton(
+                onPressed: state.status == ImagesListByBreedStatus.loading
+                    ? null
+                    : () {
+                        _onButtonTapped(context);
                       },
-                    ),
-                  ),
-              ],
-            ),
+                child: const Text('Get Images'),
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+            ],
           ),
         );
       },
     );
+  }
+
+  void _onButtonTapped(BuildContext context) {
+    context.read<ImagesListByBreedBloc>().add(ImagesListByBreedRequested());
+  }
+
+  void _onBreedChanged(Breed? value, BuildContext context) {
+    if (value != null) {
+      context.read<ImagesListByBreedBloc>().add(BreedChanged(value));
+    }
   }
 }

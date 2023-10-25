@@ -24,15 +24,12 @@ class RandomImageView extends StatelessWidget {
       ],
       builder: (context, child, tabController) {
         return Scaffold(
-          appBar: AppBar(
-            title: const Text('Random Image'),
-            bottom: TabBar(
-              controller: tabController,
-              tabs: const [
-                Tab(text: 'By Breed'),
-                Tab(text: 'By Sub Breed'),
-              ],
-            ),
+          bottomNavigationBar: TabBar(
+            controller: tabController,
+            tabs: const [
+              Tab(text: 'By Breed'),
+              Tab(text: 'By Sub Breed'),
+            ],
           ),
           body: child,
         );
