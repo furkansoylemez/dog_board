@@ -26,7 +26,7 @@ void main() {
         return BreedsBloc(mockDogRepository);
       },
       expect: () => [
-        const BreedsLoading(),
+        BreedsLoading(),
         BreedsLoaded(
           allBreeds: tBreeds,
           breedsHasSubBreeds:
@@ -43,7 +43,7 @@ void main() {
         return BreedsBloc(mockDogRepository);
       },
       expect: () => [
-        const BreedsLoading(),
+        BreedsLoading(),
         BreedsError(ServerFailure()),
       ],
     );

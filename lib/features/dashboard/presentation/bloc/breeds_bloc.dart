@@ -9,7 +9,7 @@ part 'breeds_event.dart';
 part 'breeds_state.dart';
 
 class BreedsBloc extends Bloc<BreedsEvent, BreedsState> {
-  BreedsBloc(this.dogRepository) : super(const BreedsLoading()) {
+  BreedsBloc(this.dogRepository) : super(BreedsLoading()) {
     on<BreedsRequested>(onBreedsRequested);
     add(BreedsRequested());
   }
@@ -20,7 +20,7 @@ class BreedsBloc extends Bloc<BreedsEvent, BreedsState> {
     BreedsRequested event,
     Emitter<BreedsState> emit,
   ) async {
-    emit(const BreedsLoading());
+    emit(BreedsLoading());
     final result = await dogRepository.getBreeds();
     result.fold(
       (failure) => emit(BreedsError(failure)),
