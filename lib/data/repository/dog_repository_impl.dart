@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:dog_board/core/error/exceptions.dart';
 import 'package:dog_board/core/error/failures.dart';
-import 'package:dog_board/data/data_source/local_data_source/dog_local_data_source.dart';
-import 'package:dog_board/data/data_source/remote_data_source/dog_remote_data_source.dart';
+import 'package:dog_board/data/data_source/dog_local_data_source.dart';
+import 'package:dog_board/data/data_source/dog_remote_data_source.dart';
 import 'package:dog_board/domain/entity/breed.dart';
 import 'package:dog_board/domain/entity/image_list.dart';
 import 'package:dog_board/domain/entity/random_image.dart';
