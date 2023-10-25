@@ -32,6 +32,11 @@ final tBreeds = [
   const Breed(breed: 'bulldog', subBreeds: ['boston', 'english', 'french']),
 ];
 
+final tBreedsWithSubBreeds = [
+  const Breed(breed: 'australian', subBreeds: ['shepherd']),
+  const Breed(breed: 'bulldog', subBreeds: ['boston', 'english', 'french']),
+];
+
 const tBreed = 'australian';
 
 const tSubBreed = 'shepherd';
