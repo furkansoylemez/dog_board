@@ -27,14 +27,14 @@ class DashboardView extends StatelessWidget {
       builder: (context, breedsState) {
         switch (breedsState) {
           case BreedsLoading():
-            // TODO: Update loading view.
+            // TODO(furkan): Update loading view.
             return const Scaffold(
               body: Center(
                 child: CircularProgressIndicator(),
               ),
             );
           case BreedsError():
-            // TODO: Update error view.
+            // TODO(furkan): Update error view.
             return const Scaffold(
               body: Center(
                 child: Text('Error'),

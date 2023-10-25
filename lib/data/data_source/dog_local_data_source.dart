@@ -32,7 +32,8 @@ class DogLocalDataSourceImpl implements DogLocalDataSource {
   @override
   Future<void> cacheBreeds(BreedListResponse breedsToCache) {
     return _performAndCatch(
-        () => localStorageManager.storeBreedList(breedsToCache));
+      () => localStorageManager.storeBreedList(breedsToCache),
+    );
   }
 
   @override

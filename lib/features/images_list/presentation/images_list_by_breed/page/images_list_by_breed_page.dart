@@ -28,7 +28,7 @@ class ImagesListByBreedView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ImagesListByBreedBloc, ImagesListByBreedState>(
       builder: (context, state) {
-        // TODO: Update view.
+        // TODO(furkan): Update view.
         return Scaffold(
           body: Center(
             child: Column(
