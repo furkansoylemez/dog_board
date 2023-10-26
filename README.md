@@ -43,25 +43,25 @@ The app is built following the principles of Clean Architecture, ensuring separa
 1. **Clone the repository:**
 
 ```
-$ git clone https://github.com/furkansoylemez/dog_board.git
+git clone https://github.com/furkansoylemez/dog_board.git
 ```
 
 2. **Navigate to the project directory:**
 
 ```
-$ cd dog_board
+cd dog_board
 ```
 
 3. **Install dependencies:**
 
 ```
-$ flutter pub get
+flutter pub get
 ```
 
 4. **Run the app:**
 
 ```
-$ flutter run
+flutter run
 ```
 
 ## Tests
@@ -71,13 +71,13 @@ In the project, a total of 83 unit and widget tests were written, achieving a co
 1. **Run Unit and Widget Tests:**
 
 ```
-$ flutter test
+flutter test
 ```
 
 2. **Run Integration Tests**
 
 ```
-$ flutter drive --driver=test_driver/integration_test.dart --target=integration_test/app_test.dart
+flutter drive --driver=test_driver/integration_test.dart --target=integration_test/app_test.dart
 ```
 
 ## File Structure
