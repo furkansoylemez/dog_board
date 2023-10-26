@@ -3,7 +3,7 @@ import 'package:dog_board/data/model/image_response.dart';
 import 'package:dog_board/domain/entity/image_list.dart';
 import 'package:dog_board/domain/entity/random_image.dart';
 
-final tImagesListResponse = ImageListResponse(
+const tImagesListResponse = ImageListResponse(
   message: [
     'https://images.dog.ceo/breeds/bulldog-boston/n02096585_1009.jpg',
     'https://images.dog.ceo/breeds/bulldog-boston/n02096585_1023.jpg',
@@ -24,7 +24,7 @@ const tImages = ImageList(
   ],
 );
 
-final tImageResponse = ImageResponse(
+const tImageResponse = ImageResponse(
   message: 'https://images.dog.ceo/breeds/bulldog-boston/n02096585_1009.jpg',
   status: 'success',
 );

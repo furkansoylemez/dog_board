@@ -1,10 +1,11 @@
+import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'api_response.g.dart';
 
 @JsonSerializable(genericArgumentFactories: true)
-class ApiResponse<T> {
-  ApiResponse({required this.message, required this.status});
+class ApiResponse<T> extends Equatable {
+  const ApiResponse({required this.message, required this.status});
 
   factory ApiResponse.fromJson(
     Map<String, dynamic> json,
@@ -16,4 +17,7 @@ class ApiResponse<T> {
 
   Map<String, dynamic> toJson(Object Function(T value) toJsonT) =>
       _$ApiResponseToJson(this, toJsonT);
+
+  @override
+  List<Object?> get props => [message, status];
 }

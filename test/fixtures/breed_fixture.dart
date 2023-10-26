@@ -1,7 +1,7 @@
 import 'package:dog_board/data/model/breed_list_response.dart';
 import 'package:dog_board/domain/entity/breed.dart';
 
-final tAllBreedsResponse = BreedListResponse(
+const tAllBreedsResponse = BreedListResponse(
   message: {
     'affenpinscher': [],
     'african': [],

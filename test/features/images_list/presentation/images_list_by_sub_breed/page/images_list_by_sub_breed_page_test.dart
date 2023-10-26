@@ -174,7 +174,10 @@ void main() {
     );
 
     await _createTestableWidget(
-        tester, mockBreedsBloc, mockImagesListBySubBreedBloc);
+      tester,
+      mockBreedsBloc,
+      mockImagesListBySubBreedBloc,
+    );
 
     await tester.tap(find.byType(SubBreedDropdownButton));
     await tester.pump();

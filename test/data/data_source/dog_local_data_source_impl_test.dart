@@ -1,6 +1,6 @@
 import 'package:dog_board/core/error/exceptions.dart';
-import 'package:dog_board/core/local_storage/local_storage_manager.dart';
 import 'package:dog_board/data/data_source/dog_local_data_source.dart';
+import 'package:dog_board/data/local_storage/local_storage_manager.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 

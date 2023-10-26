@@ -1,5 +1,5 @@
 import 'package:dog_board/core/error/exceptions.dart';
-import 'package:dog_board/core/local_storage/local_storage_manager.dart';
+import 'package:dog_board/data/local_storage/local_storage_manager.dart';
 import 'package:dog_board/data/model/breed_list_response.dart';
 
 abstract class DogLocalDataSource {

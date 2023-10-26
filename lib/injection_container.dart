@@ -1,10 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:dog_board/core/app_router/app_router.dart';
 import 'package:dog_board/core/app_theme/app_theme.dart';
-import 'package:dog_board/core/client/dog_client.dart';
-import 'package:dog_board/core/local_storage/local_storage_manager.dart';
+import 'package:dog_board/data/client/dog_client.dart';
 import 'package:dog_board/data/data_source/dog_local_data_source.dart';
 import 'package:dog_board/data/data_source/dog_remote_data_source.dart';
+import 'package:dog_board/data/local_storage/local_storage_manager.dart';
 import 'package:dog_board/data/repository/dog_repository_impl.dart';
 import 'package:dog_board/domain/entity/breed.dart';
 import 'package:dog_board/domain/mapper/breed_mapper.dart';

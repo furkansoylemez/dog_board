@@ -5,7 +5,7 @@ part 'image_response.g.dart';
 
 @JsonSerializable()
 class ImageResponse extends ApiResponse<String> {
-  ImageResponse({required super.message, required super.status});
+  const ImageResponse({required super.message, required super.status});
 
   factory ImageResponse.fromJson(Map<String, dynamic> json) =>
       _$ImageResponseFromJson(json);

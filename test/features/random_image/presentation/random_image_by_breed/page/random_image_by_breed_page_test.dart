@@ -136,7 +136,9 @@ void main() {
 }
 
 Future<void> _createTestableWidget(
-    WidgetTester tester, MockBreedsBloc mockBreedsBloc) async {
+  WidgetTester tester,
+  MockBreedsBloc mockBreedsBloc,
+) async {
   await tester.pumpWidget(
     MultiBlocProvider(
       providers: [

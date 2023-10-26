@@ -1,5 +1,5 @@
-import 'package:dog_board/core/client/dog_client.dart';
 import 'package:dog_board/core/error/exceptions.dart';
+import 'package:dog_board/data/client/dog_client.dart';
 import 'package:dog_board/data/model/breed_list_response.dart';
 import 'package:dog_board/data/model/image_list_response.dart';
 import 'package:dog_board/data/model/image_response.dart';

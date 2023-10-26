@@ -1,5 +1,5 @@
-import 'package:dog_board/core/client/dog_client.dart';
 import 'package:dog_board/core/error/exceptions.dart';
+import 'package:dog_board/data/client/dog_client.dart';
 import 'package:dog_board/data/data_source/dog_remote_data_source.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';

@@ -163,6 +163,46 @@ should return CacheFailure when there is a CacheException
     });
   });
 
+  group('getImagesBySubBreed', () {
+    test('should fetch images by sub breed successfully', () async {
+      // arrange
+      when(() => mockRemoteDataSource.getImagesBySubBreed(tBreed, tSubBreed))
+          .thenAnswer((_) => Future.value(tImagesListResponse));
+      when(() => mockImageListMapper.toEntity(tImagesListResponse))
+          .thenReturn(tImages);
+
+      // act
+      final result = await repository.getImagesBySubBreed(tBreed, tSubBreed);
+
+      // assert
+      expect(result, equals(const Right<Failure, ImageList>(tImages)));
+    });
+
+    test('should return ServerFailure on ServerException', () async {
+      // arrange
+      when(() => mockRemoteDataSource.getImagesBySubBreed(tBreed, tSubBreed))
+          .thenThrow(ServerException());
+
+      // act
+      final result = await repository.getImagesBySubBreed(tBreed, tSubBreed);
+
+      // assert
+      expect(result, equals(Left<Failure, ImageList>(ServerFailure())));
+    });
+
+    test('should return CacheFailure on CacheException', () async {
+      // arrange
+      when(() => mockRemoteDataSource.getImagesBySubBreed(tBreed, tSubBreed))
+          .thenThrow(CacheException());
+
+      // act
+      final result = await repository.getImagesBySubBreed(tBreed, tSubBreed);
+
+      // assert
+      expect(result, equals(Left<Failure, ImageList>(CacheFailure())));
+    });
+  });
+
   group('getRandomImageByBreed', () {
     test('should fetch random image by breed successfully', () async {
       // arrange

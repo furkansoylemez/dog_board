@@ -5,7 +5,7 @@ part 'breed_list_response.g.dart';
 
 @JsonSerializable()
 class BreedListResponse extends ApiResponse<Map<String, List<String>>> {
-  BreedListResponse({required super.message, required super.status});
+  const BreedListResponse({required super.message, required super.status});
 
   factory BreedListResponse.fromJson(Map<String, dynamic> json) =>
       _$BreedListResponseFromJson(json);

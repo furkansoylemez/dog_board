@@ -67,7 +67,10 @@ void main() {
     );
 
     await _createTestableWidget(
-        tester, mockBreedsBloc, mockRandomImageBySubBreedBloc);
+      tester,
+      mockBreedsBloc,
+      mockRandomImageBySubBreedBloc,
+    );
 
     expect(find.byType(BodyView), findsOneWidget);
     expect(find.text(AppStrings.randomImageBySubBreedBody), findsOneWidget);
@@ -84,7 +87,10 @@ void main() {
     );
 
     await _createTestableWidget(
-        tester, mockBreedsBloc, mockRandomImageBySubBreedBloc);
+      tester,
+      mockBreedsBloc,
+      mockRandomImageBySubBreedBloc,
+    );
 
     expect(find.byType(LoadingView), findsOneWidget);
   });
@@ -101,7 +107,10 @@ void main() {
     );
 
     await _createTestableWidget(
-        tester, mockBreedsBloc, mockRandomImageBySubBreedBloc);
+      tester,
+      mockBreedsBloc,
+      mockRandomImageBySubBreedBloc,
+    );
 
     expect(find.text(AppStrings.serverFailureMessage), findsOneWidget);
   });
@@ -118,7 +127,10 @@ void main() {
     );
 
     await _createTestableWidget(
-        tester, mockBreedsBloc, mockRandomImageBySubBreedBloc);
+      tester,
+      mockBreedsBloc,
+      mockRandomImageBySubBreedBloc,
+    );
 
     expect(find.byType(CustomImageContainer), findsOneWidget);
   });
@@ -134,7 +146,10 @@ void main() {
     );
 
     await _createTestableWidget(
-        tester, mockBreedsBloc, mockRandomImageBySubBreedBloc);
+      tester,
+      mockBreedsBloc,
+      mockRandomImageBySubBreedBloc,
+    );
 
     await tester.tap(find.byType(BreedDropdownButton));
     await tester.pump();
@@ -159,7 +174,10 @@ void main() {
     );
 
     await _createTestableWidget(
-        tester, mockBreedsBloc, mockRandomImageBySubBreedBloc);
+      tester,
+      mockBreedsBloc,
+      mockRandomImageBySubBreedBloc,
+    );
 
     await tester.tap(find.byType(SubBreedDropdownButton));
     await tester.pump();
@@ -177,9 +195,10 @@ void main() {
 }
 
 Future<void> _createTestableWidget(
-    WidgetTester tester,
-    MockBreedsBloc mockBreedsBloc,
-    MockRandomImageBySubBreedBloc mockRandomImageBySubBreedBloc) async {
+  WidgetTester tester,
+  MockBreedsBloc mockBreedsBloc,
+  MockRandomImageBySubBreedBloc mockRandomImageBySubBreedBloc,
+) async {
   await tester.pumpWidget(
     MultiBlocProvider(
       providers: [
