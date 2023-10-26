@@ -26,7 +26,7 @@ The app is built following the principles of Clean Architecture, ensuring separa
 - **Dependency Injection:** `get_it`
 - **Storage:** `hive`, `hive_flutter`,`path_provider`
 - **Functional Programming:** `dartz`
-- **Utilities:** `cached_network_image`,`bloc_concurrency`, `equatable`, `json_annotation`, `json_serializable`
+- **Utilities:** `cached_network_image`, `equatable`, `json_annotation`, `json_serializable`
 - **UI:** `cached_network_image`,`shimmer`, `lottie`
 - **Testing:** `bloc_test`, `flutter_test`, `mocktail`
 - **Code Generation:** `build_runner`, `retrofit_generator`, `auto_route_generator`
