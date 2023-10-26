@@ -18,7 +18,7 @@ In the project, a total of 83 unit and widget tests were written, achieving a co
 
 <img src="screenshots/screenshot1.png" alt="App Screenshot" width="30%"> <img src="screenshots/screenshot2.png" alt="App Screenshot" width="30%"> <img src="screenshots/screenshot3.png" alt="App Screenshot" width="30%">
 
-<img src="screenshots/screenshot4.png" alt="App Screenshot" width="30%"> <img src="screenshots/screenshot5.png" alt="App Screenshot" width="30%"> <img src="screenshots/screenshot6.png" alt="App Screenshot" width="30%">
+<img src="screenshots/screenshot4.png" alt="App Screenshot" width="30%"> <img src="screenshots/screenshot6.png" alt="App Screenshot" width="30%"> <img src="screenshots/screenshot5.png" alt="App Screenshot" width="30%">
 
 ## Architecture
 
