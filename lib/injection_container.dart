@@ -19,6 +19,7 @@ import 'package:dog_board/domain/use_case/get_random_image_by_sub_breed.dart';
 import 'package:dog_board/features/dashboard/presentation/bloc/breeds_bloc.dart';
 import 'package:dog_board/features/images_list/presentation/images_list_by_breed/bloc/images_list_by_breed_bloc.dart';
 import 'package:dog_board/features/images_list/presentation/images_list_by_sub_breed/bloc/images_list_by_sub_breed_bloc.dart';
+import 'package:dog_board/features/random_image/presentation/random_image_by_breed/bloc/random_image_by_breed_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 final sl = GetIt.instance;
@@ -38,6 +39,12 @@ void init() {
     )
     ..registerFactoryParam<ImagesListBySubBreedBloc, List<Breed>, void>(
       (breeds, _) => ImagesListBySubBreedBloc(
+        dogRepository: sl(),
+        breeds: breeds,
+      ),
+    )
+    ..registerFactoryParam<RandomImageByBreedBloc, List<Breed>, void>(
+      (breeds, _) => RandomImageByBreedBloc(
         dogRepository: sl(),
         breeds: breeds,
       ),
