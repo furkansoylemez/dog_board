@@ -6,8 +6,8 @@ import 'package:dog_board/features/random_image/presentation/random_image_by_bre
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import '../../../../fixtures/breed_fixture.dart';
-import '../../../../fixtures/image_list_fixture.dart';
+import '../../../../../fixtures/breed_fixture.dart';
+import '../../../../../fixtures/image_list_fixture.dart';
 
 class MockDogRepository extends Mock implements DogRepository {}
 

@@ -19,8 +19,8 @@ final tAllBreedsResponse = BreedListResponse(
 );
 
 final tBreeds = [
-  const Breed(breed: 'affenpinscher', subBreeds: []),
-  const Breed(breed: 'african', subBreeds: []),
+  const Breed(breed: 'affenpinscher', subBreeds: ['test11', 'test22']),
+  const Breed(breed: 'african', subBreeds: ['test1', 'test2']),
   const Breed(breed: 'airedale', subBreeds: []),
   const Breed(breed: 'akita', subBreeds: []),
   const Breed(breed: 'australian', subBreeds: ['shepherd']),
@@ -32,8 +32,10 @@ final tBreeds = [
   const Breed(breed: 'bulldog', subBreeds: ['boston', 'english', 'french']),
 ];
 
+const tBreedEntity = Breed(breed: 'australian', subBreeds: ['shepherd']);
+
 final tBreedsWithSubBreeds = [
-  const Breed(breed: 'australian', subBreeds: ['shepherd']),
+  const Breed(breed: 'australian', subBreeds: ['test11', 'test22']),
   const Breed(breed: 'bulldog', subBreeds: ['boston', 'english', 'french']),
 ];
 
