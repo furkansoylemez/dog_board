@@ -12,10 +12,6 @@ Dog Board simply allows you to view images by selecting a breed or both breed an
 
 When the application is first launched, the breeds are fetched from the service and cached for 2 hours. Within this period, even if the user closes and reopens the application, the breeds come from the cache. The breed information fetched after the application is opened is kept in a singleton bloc state. In this way, the breed data, which is commonly needed in every feature and which we don't expect to change frequently, is used without constantly fetching it.
 
-**Tests:**
-
-In the project, a total of 83 unit and widget tests were written, achieving a code coverage rate of over 73%.
-
 <img src="screenshots/screenshot1.png" alt="App Screenshot" width="30%"> <img src="screenshots/screenshot2.png" alt="App Screenshot" width="30%"> <img src="screenshots/screenshot3.png" alt="App Screenshot" width="30%">
 
 <img src="screenshots/screenshot4.png" alt="App Screenshot" width="30%"> <img src="screenshots/screenshot6.png" alt="App Screenshot" width="30%"> <img src="screenshots/screenshot5.png" alt="App Screenshot" width="30%">
@@ -36,6 +32,53 @@ The app is built following the principles of Clean Architecture, ensuring separa
 - **Code Generation:** `build_runner`, `retrofit_generator`, `auto_route_generator`
 
 ...among others. For a complete list, refer to the `pubspec.yaml`.
+
+## Run The Project
+
+### Prerequisites
+- Flutter SDK version '>=3.1.4 <4.0.0'
+  
+### Setup and Run
+
+1. **Clone the repository:**
+
+```
+$ git clone https://github.com/furkansoylemez/dog_board.git
+```
+
+2. **Navigate to the project directory:**
+
+```
+$ cd dog_board
+```
+
+3. **Install dependencies:**
+
+```
+$ flutter pub get
+```
+
+4. **Run the app:**
+
+```
+$ flutter run
+```
+
+## Tests
+
+In the project, a total of 83 unit and widget tests were written, achieving a code coverage rate of over 73%. Additionally, end-to-end integration tests were written for the ImagesListByBreed and RandomImageByBreed features.
+
+1. **Run Unit and Widget Tests:**
+
+```
+$ flutter test
+```
+
+2. **Run Integration Tests**
+
+```
+$ flutter drive --driver=test_driver/integration_test.dart --target=integration_test/app_test.dart
+```
 
 ## File Structure
 
@@ -95,33 +138,3 @@ The app is built following the principles of Clean Architecture, ensuring separa
     └── widgets
 ```
 
-## Run The Project
-
-### Prerequisites
-- Flutter SDK version '>=3.1.4 <4.0.0'
-  
-### Setup and Run
-
-1. **Clone the repository:**
-
-```
-$ git clone https://github.com/furkansoylemez/dog_board.git
-```
-
-2. **Navigate to the project directory:**
-
-```
-$ cd dog_board
-```
-
-3. **Install dependencies:**
-
-```
-$ flutter pub get
-```
-
-4. **Run the app:**
-
-```
-$ flutter run
-```
