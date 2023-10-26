@@ -1,11 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:dog_board/features/dashboard/presentation/page/dashboard_page.dart';
+import 'package:dog_board/features/image_full_screen/presentation/page/image_full_screen_page.dart';
 import 'package:dog_board/features/images_list/presentation/images_list/page/images_list_page.dart';
 import 'package:dog_board/features/images_list/presentation/images_list_by_breed/page/images_list_by_breed_page.dart';
 import 'package:dog_board/features/images_list/presentation/images_list_by_sub_breed/page/images_list_by_sub_breed_page.dart';
 import 'package:dog_board/features/random_image/presentation/random_image/page/random_image_page.dart';
 import 'package:dog_board/features/random_image/presentation/random_image_by_breed/page/random_image_by_breed_page.dart';
 import 'package:dog_board/features/random_image/presentation/random_image_by_sub_breed/page/random_image_by_sub_breed_page.dart';
+import 'package:flutter/material.dart';
 
 part 'app_router.gr.dart';
 
@@ -21,6 +23,10 @@ class AppRouter extends _$AppRouter {
             _imagesListTab,
             _randomImageTab,
           ],
+        ),
+        AutoRoute(
+          path: '/image-full-screen',
+          page: ImageFullScreenRoute.page,
         ),
       ];
 

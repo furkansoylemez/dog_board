@@ -3,6 +3,8 @@ import 'package:dog_board/core/app_router/app_router.dart';
 import 'package:dog_board/core/resources/app_strings.dart';
 import 'package:dog_board/features/dashboard/presentation/bloc/breeds_bloc.dart';
 import 'package:dog_board/injection_container.dart';
+import 'package:dog_board/presentation/widgets/error_view.dart';
+import 'package:dog_board/presentation/widgets/loading_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -28,17 +30,20 @@ class DashboardView extends StatelessWidget {
       builder: (context, breedsState) {
         switch (breedsState) {
           case BreedsLoading():
-            // TODO(furkan): Update loading view.
             return const Scaffold(
               body: Center(
-                child: CircularProgressIndicator(),
+                child: LoadingView(),
               ),
             );
           case BreedsError():
-            // TODO(furkan): Update error view.
-            return const Scaffold(
+            return Scaffold(
               body: Center(
-                child: Text('Error'),
+                child: ErrorView(
+                  failure: breedsState.failure,
+                  onTryAgain: () {
+                    _onTryAgain(context);
+                  },
+                ),
               ),
             );
           case BreedsLoaded():
@@ -69,5 +74,9 @@ class DashboardView extends StatelessWidget {
         }
       },
     );
+  }
+
+  void _onTryAgain(BuildContext context) {
+    context.read<BreedsBloc>().add(BreedsRequested());
   }
 }

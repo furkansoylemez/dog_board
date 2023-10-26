@@ -21,6 +21,16 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const DashboardPage(),
       );
     },
+    ImageFullScreenRoute.name: (routeData) {
+      final args = routeData.argsAs<ImageFullScreenRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: ImageFullScreenPage(
+          imageUrl: args.imageUrl,
+          key: args.key,
+        ),
+      );
+    },
     ImagesListByBreedRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -72,6 +82,44 @@ class DashboardRoute extends PageRouteInfo<void> {
   static const String name = 'DashboardRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ImageFullScreenPage]
+class ImageFullScreenRoute extends PageRouteInfo<ImageFullScreenRouteArgs> {
+  ImageFullScreenRoute({
+    required String imageUrl,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+          ImageFullScreenRoute.name,
+          args: ImageFullScreenRouteArgs(
+            imageUrl: imageUrl,
+            key: key,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'ImageFullScreenRoute';
+
+  static const PageInfo<ImageFullScreenRouteArgs> page =
+      PageInfo<ImageFullScreenRouteArgs>(name);
+}
+
+class ImageFullScreenRouteArgs {
+  const ImageFullScreenRouteArgs({
+    required this.imageUrl,
+    this.key,
+  });
+
+  final String imageUrl;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'ImageFullScreenRouteArgs{imageUrl: $imageUrl, key: $key}';
+  }
 }
 
 /// generated route for

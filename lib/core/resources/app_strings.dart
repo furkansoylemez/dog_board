@@ -1,4 +1,6 @@
 class AppStrings {
+  static const String breed = 'Breed';
+  static const String subBreed = 'Sub Breed';
   static const String imagesList = 'Images List';
   static const String randomImage = 'Random Image';
   static const String byBreed = 'By Breed';
@@ -16,4 +18,10 @@ class AppStrings {
       'Select a breed and get a random cutie!';
   static const String randomImageBySubBreedBody =
       'Select a breed and a sub breed to get a random cutie!';
+  static const String tryAgain = 'Try Again';
+  static const String serverFailureMessage =
+      '''There was a problem when trying to fetch the data. Please check your internet connection and try again later.''';
+  static const String cacheFailureMessage =
+      '''There was a problem with the cache. Please check your memory and try again later.''';
+  static const String otherFailureMessage = 'Oops! Something went wrong.';
 }

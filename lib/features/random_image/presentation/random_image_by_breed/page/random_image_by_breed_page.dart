@@ -1,11 +1,16 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:dog_board/core/extension/string_extension.dart';
+import 'package:dog_board/core/resources/app_assets.dart';
 import 'package:dog_board/core/resources/app_strings.dart';
 import 'package:dog_board/domain/entity/breed.dart';
 import 'package:dog_board/features/dashboard/presentation/bloc/breeds_bloc.dart';
 import 'package:dog_board/features/random_image/presentation/random_image_by_breed/bloc/random_image_by_breed_bloc.dart';
 import 'package:dog_board/injection_container.dart';
+import 'package:dog_board/presentation/widgets/body_view.dart';
+import 'package:dog_board/presentation/widgets/breed_dropdown_button.dart';
 import 'package:dog_board/presentation/widgets/custom_image_container.dart';
+import 'package:dog_board/presentation/widgets/error_view.dart';
+import 'package:dog_board/presentation/widgets/fetch_button.dart';
+import 'package:dog_board/presentation/widgets/loading_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -37,57 +42,51 @@ class RandomImageByBreedView extends StatelessWidget {
           ),
           body: Column(
             children: [
-              if (state.status == RandomImageByBreedStatus.loading)
+              if (state.status == RandomImageByBreedStatus.initial)
                 const Expanded(
-                  child: Center(child: CircularProgressIndicator()),
+                  child: Center(
+                    child: BodyView(
+                      asset: AppAssets.dogWaiting3Lottie,
+                      text: AppStrings.randomImageByBreedBody,
+                    ),
+                  ),
+                )
+              else if (state.status == RandomImageByBreedStatus.loading)
+                const Expanded(
+                  child: Center(child: LoadingView()),
                 )
               else if (state.status == RandomImageByBreedStatus.error)
-                Expanded(child: Center(child: Text(state.failure.toString())))
+                Expanded(
+                  child: Center(
+                    child: ErrorView(
+                      failure: state.failure,
+                    ),
+                  ),
+                )
               else if (state.status == RandomImageByBreedStatus.loaded &&
                   state.randomImage != null)
                 Expanded(
                   child:
                       CustomImageContainer(imageUrl: state.randomImage!.image),
-                )
-              else if (state.status == RandomImageByBreedStatus.initial)
-                const Expanded(
-                  child: Center(
-                    child: Text(
-                      AppStrings.randomImageByBreedBody,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
                 ),
               const SizedBox(height: 8),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24),
-                child: DropdownButtonFormField(
+                child: BreedDropdownButton(
                   value: state.selectedBreed,
-                  items: state.breeds
-                      .map(
-                        (breed) => DropdownMenuItem(
-                          value: breed,
-                          child: Text(breed.breed.capitalize),
-                        ),
-                      )
-                      .toList(),
+                  breeds: state.breeds,
                   onChanged: (value) {
                     _onBreedChanged(value, context);
                   },
                 ),
               ),
               const SizedBox(height: 8),
-              ElevatedButton(
+              FetchButton(
                 onPressed: state.status == RandomImageByBreedStatus.loading
                     ? null
                     : () {
                         _onButtonTapped(context);
                       },
-                child: const Text(AppStrings.fetch),
               ),
               const SizedBox(
                 height: 8,
@@ -103,9 +102,7 @@ class RandomImageByBreedView extends StatelessWidget {
     context.read<RandomImageByBreedBloc>().add(RandomImageByBreedRequested());
   }
 
-  void _onBreedChanged(Breed? value, BuildContext context) {
-    if (value != null) {
-      context.read<RandomImageByBreedBloc>().add(BreedChanged(value));
-    }
+  void _onBreedChanged(Breed value, BuildContext context) {
+    context.read<RandomImageByBreedBloc>().add(BreedChanged(value));
   }
 }

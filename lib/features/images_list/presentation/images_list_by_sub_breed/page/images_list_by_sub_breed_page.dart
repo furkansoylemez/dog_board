@@ -1,11 +1,17 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:dog_board/core/extension/string_extension.dart';
+import 'package:dog_board/core/resources/app_assets.dart';
 import 'package:dog_board/core/resources/app_strings.dart';
 import 'package:dog_board/domain/entity/breed.dart';
 import 'package:dog_board/features/dashboard/presentation/bloc/breeds_bloc.dart';
 import 'package:dog_board/features/images_list/presentation/images_list_by_sub_breed/bloc/images_list_by_sub_breed_bloc.dart';
 import 'package:dog_board/injection_container.dart';
+import 'package:dog_board/presentation/widgets/body_view.dart';
+import 'package:dog_board/presentation/widgets/breed_dropdown_button.dart';
 import 'package:dog_board/presentation/widgets/custom_grid_view.dart';
+import 'package:dog_board/presentation/widgets/error_view.dart';
+import 'package:dog_board/presentation/widgets/fetch_button.dart';
+import 'package:dog_board/presentation/widgets/loading_view.dart';
+import 'package:dog_board/presentation/widgets/sub_breed_dropdown_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -37,30 +43,32 @@ class ImagesListBySubBreedView extends StatelessWidget {
           ),
           body: Column(
             children: [
-              if (state.status == ImagesListBySubBreedStatus.loading)
+              if (state.status == ImagesListBySubBreedStatus.initial)
                 const Expanded(
-                  child: Center(child: CircularProgressIndicator()),
+                  child: Center(
+                    child: BodyView(
+                      asset: AppAssets.dogWaiting2Lottie,
+                      text: AppStrings.imagesBySubBreedBody,
+                    ),
+                  ),
+                )
+              else if (state.status == ImagesListBySubBreedStatus.loading)
+                const Expanded(
+                  child: Center(child: LoadingView()),
                 )
               else if (state.status == ImagesListBySubBreedStatus.error)
-                Expanded(child: Center(child: Text(state.failure.toString())))
+                Expanded(
+                  child: Center(
+                    child: ErrorView(
+                      failure: state.failure,
+                    ),
+                  ),
+                )
               else if (state.status == ImagesListBySubBreedStatus.loaded &&
                   state.imageList != null)
                 Expanded(
                   child: CustomGridView(
                     imageList: state.imageList!,
-                  ),
-                )
-              else if (state.status == ImagesListBySubBreedStatus.initial)
-                const Expanded(
-                  child: Center(
-                    child: Text(
-                      AppStrings.imagesBySubBreedBody,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
                   ),
                 ),
               const SizedBox(height: 8),
@@ -69,16 +77,9 @@ class ImagesListBySubBreedView extends StatelessWidget {
                 child: Row(
                   children: [
                     Expanded(
-                      child: DropdownButtonFormField(
+                      child: BreedDropdownButton(
                         value: state.selectedBreed,
-                        items: state.breeds
-                            .map(
-                              (breed) => DropdownMenuItem(
-                                value: breed,
-                                child: Text(breed.breed.capitalize),
-                              ),
-                            )
-                            .toList(),
+                        breeds: state.breeds,
                         onChanged: (value) {
                           _onBreedChanged(value, context);
                         },
@@ -86,16 +87,9 @@ class ImagesListBySubBreedView extends StatelessWidget {
                     ),
                     const SizedBox(width: 12),
                     Expanded(
-                      child: DropdownButtonFormField(
+                      child: SubBreedDropdownButton(
                         value: state.selectedSubBreed,
-                        items: state.selectedBreed.subBreeds
-                            .map(
-                              (subBreed) => DropdownMenuItem(
-                                value: subBreed,
-                                child: Text(subBreed.capitalize),
-                              ),
-                            )
-                            .toList(),
+                        subBreeds: state.selectedBreed.subBreeds,
                         onChanged: (value) {
                           _onSubBreedChanged(value, context);
                         },
@@ -105,13 +99,12 @@ class ImagesListBySubBreedView extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 8),
-              ElevatedButton(
+              FetchButton(
                 onPressed: state.status == ImagesListBySubBreedStatus.loading
                     ? null
                     : () {
                         _onButtonTapped(context);
                       },
-                child: const Text(AppStrings.fetch),
               ),
               const SizedBox(
                 height: 8,
@@ -129,19 +122,15 @@ class ImagesListBySubBreedView extends StatelessWidget {
         .add(ImagesListBySubBreedRequested());
   }
 
-  void _onSubBreedChanged(String? value, BuildContext context) {
-    if (value != null) {
-      context.read<ImagesListBySubBreedBloc>().add(
-            SubBreedChanged(value),
-          );
-    }
+  void _onSubBreedChanged(String value, BuildContext context) {
+    context.read<ImagesListBySubBreedBloc>().add(
+          SubBreedChanged(value),
+        );
   }
 
-  void _onBreedChanged(Breed? value, BuildContext context) {
-    if (value != null) {
-      context.read<ImagesListBySubBreedBloc>().add(
-            BreedChanged(value),
-          );
-    }
+  void _onBreedChanged(Breed value, BuildContext context) {
+    context.read<ImagesListBySubBreedBloc>().add(
+          BreedChanged(value),
+        );
   }
 }
