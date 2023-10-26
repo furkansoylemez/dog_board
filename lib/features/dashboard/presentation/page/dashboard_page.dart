@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:dog_board/core/app_router/app_router.dart';
+import 'package:dog_board/core/resources/app_strings.dart';
 import 'package:dog_board/features/dashboard/presentation/bloc/breeds_bloc.dart';
 import 'package:dog_board/injection_container.dart';
 import 'package:flutter/material.dart';
@@ -54,12 +55,12 @@ class DashboardView extends StatelessWidget {
                     BottomNavigationBarItem(
                       activeIcon: Icon(Icons.photo_library),
                       icon: Icon(Icons.photo_library_outlined),
-                      label: 'Images List',
+                      label: AppStrings.imagesList,
                     ),
                     BottomNavigationBarItem(
                       activeIcon: Icon(Icons.casino),
                       icon: Icon(Icons.casino_outlined),
-                      label: 'Random Image',
+                      label: AppStrings.randomImage,
                     ),
                   ],
                 );

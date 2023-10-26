@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:dog_board/core/extension/string_extension.dart';
+import 'package:dog_board/core/resources/app_strings.dart';
 import 'package:dog_board/domain/entity/breed.dart';
 import 'package:dog_board/features/dashboard/presentation/bloc/breeds_bloc.dart';
 import 'package:dog_board/features/random_image/presentation/random_image_by_breed/bloc/random_image_by_breed_bloc.dart';
@@ -32,7 +33,7 @@ class RandomImageByBreedView extends StatelessWidget {
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(
-            title: const Text('Random Image by Breed'),
+            title: const Text(AppStrings.randomImageByBreed),
           ),
           body: Column(
             children: [
@@ -52,7 +53,7 @@ class RandomImageByBreedView extends StatelessWidget {
                 const Expanded(
                   child: Center(
                     child: Text(
-                      'Select a breed and get a random cutie!',
+                      AppStrings.randomImageByBreedBody,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 18,
@@ -86,7 +87,7 @@ class RandomImageByBreedView extends StatelessWidget {
                     : () {
                         _onButtonTapped(context);
                       },
-                child: const Text('Get Image'),
+                child: const Text(AppStrings.fetch),
               ),
               const SizedBox(
                 height: 8,

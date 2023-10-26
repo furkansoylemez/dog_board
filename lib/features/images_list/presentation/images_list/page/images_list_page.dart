@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:dog_board/core/app_router/app_router.dart';
+import 'package:dog_board/core/resources/app_strings.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
@@ -27,8 +28,8 @@ class ImagesListView extends StatelessWidget {
           bottomNavigationBar: TabBar(
             controller: tabController,
             tabs: const [
-              Tab(text: 'By Breed'),
-              Tab(text: 'By Sub Breed'),
+              Tab(text: AppStrings.byBreed),
+              Tab(text: AppStrings.bySubBreed),
             ],
           ),
           body: SafeArea(child: child),

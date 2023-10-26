@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:dog_board/core/extension/string_extension.dart';
+import 'package:dog_board/core/resources/app_strings.dart';
 import 'package:dog_board/domain/entity/breed.dart';
 import 'package:dog_board/features/dashboard/presentation/bloc/breeds_bloc.dart';
 import 'package:dog_board/features/images_list/presentation/images_list_by_sub_breed/bloc/images_list_by_sub_breed_bloc.dart';
@@ -32,7 +33,7 @@ class ImagesListBySubBreedView extends StatelessWidget {
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(
-            title: const Text('Images List By Sub Breed'),
+            title: const Text(AppStrings.imagesListBySubBreed),
           ),
           body: Column(
             children: [
@@ -53,7 +54,7 @@ class ImagesListBySubBreedView extends StatelessWidget {
                 const Expanded(
                   child: Center(
                     child: Text(
-                      'Select a breed and a sub breed to fetch your dose of cuteness!',
+                      AppStrings.imagesBySubBreedBody,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 18,
@@ -110,7 +111,7 @@ class ImagesListBySubBreedView extends StatelessWidget {
                     : () {
                         _onButtonTapped(context);
                       },
-                child: const Text('Get Images'),
+                child: const Text(AppStrings.fetch),
               ),
               const SizedBox(
                 height: 8,
