@@ -93,9 +93,10 @@ The app is built following the principles of Clean Architecture, ensuring separa
 
 ## Run The Project
 
-![App Screenshot](screenshots/screenshot1.png) ![App Screenshot](screenshots/screenshot2.png) ![App Screenshot](screenshots/screenshot3.png)
+<img src="screenshots/screenshot1.png" alt="App Screenshot" width="30%"> <img src="screenshots/screenshot2.png" alt="App Screenshot" width="30%"> <img src="screenshots/screenshot3.png" alt="App Screenshot" width="30%">
 
-![App Screenshot](screenshots/screenshot4.png) ![App Screenshot](screenshots/screenshot5.png) ![App Screenshot](screenshots/screenshot6.png)
+<img src="screenshots/screenshot4.png" alt="App Screenshot" width="30%"> <img src="screenshots/screenshot5.png" alt="App Screenshot" width="30%"> <img src="screenshots/screenshot6.png" alt="App Screenshot" width="30%">
+
 
 ### Prerequisites
 - Flutter SDK version '>=3.1.4 <4.0.0'
