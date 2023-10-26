@@ -16,6 +16,10 @@ When the application is first launched, the breeds are fetched from the service 
 
 In the project, a total of 83 unit and widget tests were written, achieving a code coverage rate of over 73%.
 
+<img src="screenshots/screenshot1.png" alt="App Screenshot" width="30%"> <img src="screenshots/screenshot2.png" alt="App Screenshot" width="30%"> <img src="screenshots/screenshot3.png" alt="App Screenshot" width="30%">
+
+<img src="screenshots/screenshot4.png" alt="App Screenshot" width="30%"> <img src="screenshots/screenshot5.png" alt="App Screenshot" width="30%"> <img src="screenshots/screenshot6.png" alt="App Screenshot" width="30%">
+
 ## Architecture
 
 The app is built following the principles of Clean Architecture, ensuring separation of concerns, testability, and maintainability. It employs a wide array of packages to achieve this robust architecture:
@@ -92,11 +96,6 @@ The app is built following the principles of Clean Architecture, ensuring separa
 ```
 
 ## Run The Project
-
-<img src="screenshots/screenshot1.png" alt="App Screenshot" width="30%"> <img src="screenshots/screenshot2.png" alt="App Screenshot" width="30%"> <img src="screenshots/screenshot3.png" alt="App Screenshot" width="30%">
-
-<img src="screenshots/screenshot4.png" alt="App Screenshot" width="30%"> <img src="screenshots/screenshot5.png" alt="App Screenshot" width="30%"> <img src="screenshots/screenshot6.png" alt="App Screenshot" width="30%">
-
 
 ### Prerequisites
 - Flutter SDK version '>=3.1.4 <4.0.0'
