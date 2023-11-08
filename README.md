@@ -4,14 +4,6 @@
 
 “Dog Board” is a mobile application where you can find plenty of cute dog pictures. Besides its cuteness, the app was developed with Test Driven Development, considering the Clean Architecture, and best practices were diligently utilized.
 
-**Functionality:**
-
-Dog Board simply allows you to view images by selecting a breed or both breed and sub-breed. Just select the desired breed and sub-breed, press the button, and once the pictures are loaded, you can click on an image to zoom in and out to get your daily dose of cuteness.
-
-**Logic:**
-
-When the application is first launched, the breeds are fetched from the service and cached for 2 hours. Within this period, even if the user closes and reopens the application, the breeds come from the cache. The breed information fetched after the application is opened is kept in a singleton bloc state. In this way, the breed data, which is commonly needed in every feature and which we don't expect to change frequently, is used without constantly fetching it.
-
 <img src="screenshots/screenshot1.png" alt="App Screenshot" width="30%"> <img src="screenshots/screenshot2.png" alt="App Screenshot" width="30%"> <img src="screenshots/screenshot3.png" alt="App Screenshot" width="30%">
 
 <img src="screenshots/screenshot4.png" alt="App Screenshot" width="30%"> <img src="screenshots/screenshot6.png" alt="App Screenshot" width="30%"> <img src="screenshots/screenshot5.png" alt="App Screenshot" width="30%">
